@@ -1,6 +1,7 @@
-import { range } from "@/utils/array";
+export const range = (start: any, stop: any) =>
+  Array.from({ length: stop - start + 1 }, (_, i) => start + i);
 
-export default function LoaderTable({ className = "", tr = 2, td = 5 }) {
+export default function LoaderTable({ className = '', tr = 2, td = 5 }) {
   return (
     <>
       {range(1, tr).map((num: any, index: any) => (

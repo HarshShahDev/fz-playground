@@ -1,18 +1,17 @@
-import type { VariantProps } from "class-variance-authority";
-import { cva } from "class-variance-authority";
-import type { LinkProps } from "next/link";
-import Link from "next/link";
-import React, { forwardRef } from "react";
-import classNames from "classnames";
-import { applyStyleToMultipleVariants } from "./cva";
+import type { VariantProps } from 'class-variance-authority';
+import { cva } from 'class-variance-authority';
+import type { LinkProps } from 'next/link';
+import Link from 'next/link';
+import React, { forwardRef } from 'react';
+import classNames from 'classnames';
+import { applyStyleToMultipleVariants } from './cva';
 
-import { FiPlus } from "react-icons/fi";
-import { Tooltip } from "../Tooltip";
+import { FiPlus } from 'react-icons/fi';
 
 type SVGComponent = React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
 type InferredVariantProps = VariantProps<typeof buttonClasses>;
 
-export type ButtonColor = NonNullable<InferredVariantProps["color"]>;
+export type ButtonColor = NonNullable<InferredVariantProps['color']>;
 export type ButtonBaseProps = {
   /** Action that happens when the button is clicked */
   onClick?: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void;
@@ -24,145 +23,145 @@ export type ButtonBaseProps = {
   /**Tool tip used when icon size is set to small */
   tooltip?: string;
   flex?: boolean;
-} & Omit<InferredVariantProps, "color"> & {
+} & Omit<InferredVariantProps, 'color'> & {
     color?: ButtonColor;
   };
 
 export type ButtonProps = ButtonBaseProps &
   (
-    | (Omit<JSX.IntrinsicElements["a"], "href" | "onClick" | "ref"> & LinkProps)
-    | (Omit<JSX.IntrinsicElements["button"], "onClick" | "ref"> & {
+    | (Omit<JSX.IntrinsicElements['a'], 'href' | 'onClick' | 'ref'> & LinkProps)
+    | (Omit<JSX.IntrinsicElements['button'], 'onClick' | 'ref'> & {
         href?: never;
       })
   );
 
 const buttonClasses = cva(
-  "inline-flex items-center text-sm font-medium relative rounded-md transition-colors",
+  'inline-flex items-center text-sm font-medium relative rounded-md transition-colors',
   {
     variants: {
       variant: {
-        button: "",
-        icon: "flex justify-center",
-        fab: "rounded-full justify-center md:rounded-md radix-state-open:rotate-45 md:radix-state-open:rotate-0 transition-transform radix-state-open:shadown-none radix-state-open:ring-0 !shadow-none",
+        button: '',
+        icon: 'flex justify-center',
+        fab: 'rounded-full justify-center md:rounded-md radix-state-open:rotate-45 md:radix-state-open:rotate-0 transition-transform radix-state-open:shadown-none radix-state-open:ring-0 !shadow-none',
       },
       color: {
-        primary: "text-white dark:text-white",
-        secondary: "text-gray-900 dark:text-darkgray-900",
-        minimal: "text-gray-900 dark:text-darkgray-900",
-        destructive: "",
+        primary: 'text-white dark:text-white',
+        secondary: 'text-gray-900 dark:text-darkgray-900',
+        minimal: 'text-gray-900 dark:text-darkgray-900',
+        destructive: '',
       },
       size: {
-        sm: "px-3 py-2 leading-4 rounded-sm" /** For backwards compatibility */,
-        base: "h-9 px-4 py-2.5 ",
-        lg: "h-[36px] px-4 py-2.5 ",
+        sm: 'px-3 py-2 leading-4 rounded-sm' /** For backwards compatibility */,
+        base: 'h-9 px-4 py-2.5 ',
+        lg: 'h-[36px] px-4 py-2.5 ',
       },
       loading: {
-        true: "cursor-wait",
+        true: 'cursor-wait',
       },
       disabled: {
-        true: "cursor-not-allowed",
+        true: 'cursor-not-allowed',
       },
     },
     compoundVariants: [
       // Primary variants
       {
         disabled: true,
-        color: "primary",
+        color: 'primary',
         className:
-          "bg-gray-900 bg-opacity-30 dark:bg-opacity-30 dark:bg-darkgray-800",
+          'bg-gray-900 bg-opacity-30 dark:bg-opacity-30 dark:bg-darkgray-800',
       },
       {
         loading: true,
-        color: "primary",
+        color: 'primary',
         className:
-          "bg-gray-900/30 text-white/30 dark:bg-opacity-30 dark:bg-darkgray-700 dark:text-black/30",
+          'bg-gray-900/30 text-white/30 dark:bg-opacity-30 dark:bg-darkgray-700 dark:text-black/30',
       },
       ...applyStyleToMultipleVariants({
         disabled: [undefined, false],
-        color: "primary",
+        color: 'primary',
         className:
-          "bg-orange-500 hover:bg-orange-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset focus-visible:ring-orange-500 dark:hover:bg-darkgray-600 dark:bg-darkgray-900",
+          'bg-orange-500 hover:bg-orange-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset focus-visible:ring-orange-500 dark:hover:bg-darkgray-600 dark:bg-darkgray-900',
       }),
       // Secondary variants
       {
         disabled: true,
-        color: "secondary",
+        color: 'secondary',
         className:
-          "border border-gray-200 bg-opacity-30 text-gray-900/30 dark:text-darkgray-900/30 dark:border-darkgray-200",
+          'border border-gray-200 bg-opacity-30 text-gray-900/30 dark:text-darkgray-900/30 dark:border-darkgray-200',
       },
       {
         loading: true,
-        color: "secondary",
+        color: 'secondary',
         className:
-          "bg-gray-100 text-gray-900/30 dark:bg-darkgray-100 dark:text-darkgray-900/30 dark:border-darkgray-200",
+          'bg-gray-100 text-gray-900/30 dark:bg-darkgray-100 dark:text-darkgray-900/30 dark:border-darkgray-200',
       },
       ...applyStyleToMultipleVariants({
         disabled: [undefined, false],
-        color: "secondary",
+        color: 'secondary',
         className:
-          "border border-gray-300 dark:border-darkgray-300 bg-white dark:bg-darkgray-100 hover:bg-gray-50 hover:border-gray-400 focus-visible:bg-gray-100 dark:hover:bg-darkgray-200 dark:focus-visible:bg-darkgray-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset focus-visible:ring-gray-900 dark:focus-visible:ring-white",
+          'border border-gray-300 dark:border-darkgray-300 bg-white dark:bg-darkgray-100 hover:bg-gray-50 hover:border-gray-400 focus-visible:bg-gray-100 dark:hover:bg-darkgray-200 dark:focus-visible:bg-darkgray-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset focus-visible:ring-gray-900 dark:focus-visible:ring-white',
       }),
       // Minimal variants
       {
         disabled: true,
-        color: "minimal",
+        color: 'minimal',
         className:
-          "border:gray-200 bg-opacity-30 text-gray-900/30 dark:bg-darkgray-100 dark:text-darkgray-900/30 dark:border-darkgray-200",
+          'border:gray-200 bg-opacity-30 text-gray-900/30 dark:bg-darkgray-100 dark:text-darkgray-900/30 dark:border-darkgray-200',
       },
       {
         loading: true,
-        color: "minimal",
+        color: 'minimal',
         className:
-          "bg-gray-100 text-gray-900/30 dark:bg-darkgray-100 dark:text-darkgray-900/30 dark:border-darkgray-200",
+          'bg-gray-100 text-gray-900/30 dark:bg-darkgray-100 dark:text-darkgray-900/30 dark:border-darkgray-200',
       },
       ...applyStyleToMultipleVariants({
         disabled: [undefined, false],
-        color: "minimal",
+        color: 'minimal',
         className:
-          "hover:bg-gray-100 focus-visible:bg-gray-100 dark:hover:bg-darkgray-200 dark:focus-visible:bg-darkgray-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset focus-visible:ring-gray-900 dark:focus-visible:ring-white",
+          'hover:bg-gray-100 focus-visible:bg-gray-100 dark:hover:bg-darkgray-200 dark:focus-visible:bg-darkgray-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset focus-visible:ring-gray-900 dark:focus-visible:ring-white',
       }),
       // Destructive variants
       {
         disabled: true,
-        color: "destructive",
+        color: 'destructive',
         className:
-          "text-red-700/30 dark:text-red-700/30 bg-red-100/40 dark:bg-red-100/80 border border-red-200",
+          'text-red-700/30 dark:text-red-700/30 bg-red-100/40 dark:bg-red-100/80 border border-red-200',
       },
       {
         loading: true,
-        color: "destructive",
+        color: 'destructive',
         className:
-          "text-red-700/30 dark:text-red-700/30 hover:text-red-700/30 bg-red-100 border border-red-200",
+          'text-red-700/30 dark:text-red-700/30 hover:text-red-700/30 bg-red-100 border border-red-200',
       },
       ...applyStyleToMultipleVariants({
         disabled: [false, undefined],
-        color: "destructive",
+        color: 'destructive',
         className:
-          "border dark:text-white text-gray-900 hover:text-red-700 focus-visible:text-red-700 dark:hover:text-red-700 dark:focus-visible:text-red-700 hover:border-red-100 focus-visible:border-red-100 hover:bg-red-100  focus-visible:bg-red-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset focus-visible:ring-red-700",
+          'border dark:text-white text-gray-900 hover:text-red-700 focus-visible:text-red-700 dark:hover:text-red-700 dark:focus-visible:text-red-700 hover:border-red-100 focus-visible:border-red-100 hover:bg-red-100  focus-visible:bg-red-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset focus-visible:ring-red-700',
       }),
       // https://github.com/joe-bell/cva/issues/95 created an issue about using !p-2 on the icon variants as i would expect this to take priority
       {
-        variant: "icon",
-        size: "base",
-        className: "min-h-[36px] min-w-[36px] !p-2",
+        variant: 'icon',
+        size: 'base',
+        className: 'min-h-[36px] min-w-[36px] !p-2',
       },
       {
-        variant: "icon",
-        size: "sm",
-        className: "h-6 w-6 !p-1",
+        variant: 'icon',
+        size: 'sm',
+        className: 'h-6 w-6 !p-1',
       },
       {
-        variant: "fab",
-        size: "base",
-        className: "h-14 md:h-9 md:w-auto md:px-4 md:py-2.5",
+        variant: 'fab',
+        size: 'base',
+        className: 'h-14 md:h-9 md:w-auto md:px-4 md:py-2.5',
       },
     ],
     defaultVariants: {
-      variant: "button",
-      color: "primary",
-      size: "base",
+      variant: 'button',
+      color: 'primary',
+      size: 'base',
     },
-  }
+  },
 );
 
 export const CButton = forwardRef<
@@ -171,10 +170,10 @@ export const CButton = forwardRef<
 >(function Button(props: ButtonProps, forwardedRef) {
   const {
     loading = false,
-    color = "primary",
+    color = 'primary',
     size,
-    variant = "button",
-    type = "button",
+    variant = 'button',
+    type = 'button',
     StartIcon,
     EndIcon,
     shallow,
@@ -184,8 +183,8 @@ export const CButton = forwardRef<
   // Buttons are **always** disabled if we're in a `loading` state
   const disabled = props.disabled || loading;
   // If pass an `href`-attr is passed it's `<a>`, otherwise it's a `<button />`
-  const isLink = typeof props.href !== "undefined";
-  const elementType = isLink ? "a" : "button";
+  const isLink = typeof props.href !== 'undefined';
+  const elementType = isLink ? 'a' : 'button';
   const element = React.createElement(
     elementType,
     {
@@ -201,7 +200,7 @@ export const CButton = forwardRef<
           disabled: props.disabled,
           variant,
         }),
-        props.className
+        props.className,
       ),
       // if we click a disabled button, we prevent going through the click handler
       onClick: disabled
@@ -213,34 +212,34 @@ export const CButton = forwardRef<
     <>
       {StartIcon && (
         <>
-          {variant === "fab" ? (
+          {variant === 'fab' ? (
             <>
-              <StartIcon className="hidden h-4 w-4 stroke-[1.5px] mr-2 -ml-1 md:inline-flex" />
+              <StartIcon className="-ml-1 mr-2 hidden h-4 w-4 stroke-[1.5px] md:inline-flex" />
               <FiPlus className="inline h-6 w-6 md:hidden" />
             </>
           ) : (
             <StartIcon
               className={classNames(
-                variant === "icon" && "h-4 w-4",
-                variant === "button" && "h-4 w-4 stroke-[1.5px] -ml-1 mr-2"
+                variant === 'icon' && 'h-4 w-4',
+                variant === 'button' && '-ml-1 mr-2 h-4 w-4 stroke-[1.5px]',
               )}
             />
           )}
         </>
       )}
-      {variant === "fab" ? (
+      {variant === 'fab' ? (
         <span className="hidden md:inline">{props.children}</span>
       ) : (
         props.children
       )}
       {loading && (
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transform">
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform">
           <svg
             className={classNames(
-              "mx-4 h-5 w-5 animate-spin",
-              color === "primary"
-                ? "text-white dark:text-black"
-                : "text-black dark:text-white"
+              'mx-4 h-5 w-5 animate-spin',
+              color === 'primary'
+                ? 'text-white dark:text-black'
+                : 'text-black dark:text-white',
             )}
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -264,23 +263,23 @@ export const CButton = forwardRef<
       )}
       {EndIcon && (
         <>
-          {variant === "fab" ? (
+          {variant === 'fab' ? (
             <>
-              <EndIcon className="-mr-1 hidden h-5 w-5 ml-2 md:inline" />
+              <EndIcon className="-mr-1 ml-2 hidden h-5 w-5 md:inline" />
               <FiPlus className="inline h-6 w-6 md:hidden" />
             </>
           ) : (
             <EndIcon
               className={classNames(
-                "inline-flex",
-                variant === "icon" && "h-4 w-4",
-                variant === "button" && "h-4 w-4 stroke-[1.5px] ml-2 -mr-1"
+                'inline-flex',
+                variant === 'icon' && 'h-4 w-4',
+                variant === 'button' && '-mr-1 ml-2 h-4 w-4 stroke-[1.5px]',
               )}
             />
           )}
         </>
       )}
-    </>
+    </>,
   );
 
   return props.href ? (
@@ -308,5 +307,5 @@ const Wrapper = ({
     return <>{children}</>;
   }
 
-  return <Tooltip content={tooltip}>{children}</Tooltip>;
+  return <div></div>;
 };
