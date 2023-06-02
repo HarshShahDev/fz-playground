@@ -19,7 +19,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="[color-scheme:dark]">
-      <body className="bg-gray-1100 overflow-y-scroll bg-[url('/grid.svg')] pb-36">
+      <body className="bg-gray-1100 relative overflow-y-scroll bg-[url('/grid.svg')] pb-36">
         <GlobalNav />
 
         <div className="lg:pl-72">
@@ -30,12 +30,12 @@ export default function RootLayout({
               </div>
             </div>
 
-            <div className="bg-vc-border-gradient rounded-lg p-px shadow-lg shadow-black/20">
+            <div className="bg-vc-border-gradient relative rounded-lg p-px shadow-lg shadow-black/20">
               <div className="rounded-lg bg-black p-3.5 lg:p-6">{children}</div>
             </div>
-            <Byline className="fixed sm:hidden" />
           </div>
         </div>
+        <Byline className="absolute hidden sm:block" />
       </body>
     </html>
   );
