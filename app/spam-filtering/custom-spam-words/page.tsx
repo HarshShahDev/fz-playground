@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
 import Link from 'next/link';
+import { BsBoxArrowUpRight } from 'react-icons/bs';
 import Button from '#/ui/Buttons';
 import { ExternalLink } from '#/ui/external-link';
 import { Input } from '#/ui/input';
@@ -11,14 +12,16 @@ export default function Page() {
     <>
       <div className="prose prose-sm prose-invert max-w-none">
         <h1 className="text-xl font-bold">Custom Spam Words</h1>
-        To try Custom Spam Words featuer follow step given in{' '}
-        <Link
-          href={`${process.env.NEXT_PUBLIC_DOCS_URL}/setup/spam-protection/custom-spam-words`}
-          target={'_blank'}
-        >
-          documentation
-        </Link>{' '}
-        and enter that form-id bellow.
+        <p>
+          To try Custom Spam Words featuer follow step given in{' '}
+          <Link
+            href={`${process.env.NEXT_PUBLIC_DOCS_URL}/setup/spam-protection/custom-spam-words`}
+            target={'_blank'}
+          >
+            documentation <BsBoxArrowUpRight className="inline" />
+          </Link>{' '}
+          and enter that form-id bellow.
+        </p>
         <div className="mb-4 mt-4 w-[30%] justify-center">
           <label className="mb-2 block text-sm font-bold " htmlFor="form-id">
             Form ID
