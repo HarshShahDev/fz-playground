@@ -2,7 +2,6 @@ import Button from '#/ui/Buttons';
 import { ExternalLink } from '#/ui/external-link';
 import { Input } from '#/ui/input';
 import { TextArea } from '#/ui/textArea';
-import Script from 'next/script';
 
 export default function Page() {
   return (
