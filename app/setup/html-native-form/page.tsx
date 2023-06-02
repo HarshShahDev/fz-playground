@@ -7,7 +7,7 @@ import Script from 'next/script';
 export default function Page() {
   return (
     <div className="prose prose-sm prose-invert max-w-none">
-      <h1 className="text-xl font-bold">Recaptcha V3</h1>
+      <h1 className="text-xl font-bold">HTML Native Form</h1>
       <form action="https://dev-app.formzillion.com/f/bNw3T01h" method="post">
         <div className=" mx-auto mb-4 justify-center space-y-5 rounded bg-gray-400/10 px-8 pb-8 pt-6">
           <div>

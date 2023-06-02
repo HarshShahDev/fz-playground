@@ -13,9 +13,9 @@ export default function Page() {
         data-theme="dak"
       ></Script>
       <div className="prose prose-sm prose-invert max-w-none">
-        <h1 className="text-xl font-bold">File Uploads</h1>
+        <h1 className="text-xl font-bold">reCaptcha V2</h1>
 
-        <form action="https://dev-app.formzillion.com/f/-ZDlzylF" method="post">
+        <form action="https://dev-app.formzillion.com/f/yJwuemI6" method="post">
           <div className=" mx-auto mb-4 justify-center rounded bg-gray-400/10 px-8 pb-8 pt-6 ">
             <div className="mb-4 mt-4 justify-center">
               <label
@@ -50,7 +50,7 @@ export default function Page() {
 
             <div
               className="g-recaptcha"
-              data-sitekey="6LcPNhcmAAAAAMwZvwQDROezpkfTMUpo4euLUvWH"
+              data-sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_V2_SITE_KEY}
               data-callback="enableBtn"
               data-theme="dak"
             ></div>
