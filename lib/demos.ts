@@ -68,4 +68,13 @@ export const demos: { name: string; items: Item[] }[] = [
       },
     ],
   },
+  {
+    name: 'Notifications',
+    items: [
+      {
+        name: 'Autoresponders',
+        slug: 'autoresponders',
+      },
+    ],
+  },
 ];

@@ -5,21 +5,22 @@ export default function Document() {
     <Html>
       <Head>
         <link
-          href="/favicon/apple-touch-icon.png"
+          href="/logos/favicon.svg"
           rel="apple-touch-icon"
           sizes="180x180"
+          type="image/svg+xml"
         />
         <link
-          href="/favicon/favicon-32x32.png"
+          href="/logos/favicon.svg"
           rel="icon"
           sizes="32x32"
-          type="image/png"
+          type="image/svg+xml"
         />
         <link
-          href="/favicon/favicon-16x16.png"
+          href="/logos/favicon.svg"
           rel="icon"
           sizes="16x16"
-          type="image/png"
+          type="image/svg+xml"
         />
         <link href="/favicon/site.webmanifest" rel="manifest" />
         <link
@@ -29,7 +30,7 @@ export default function Document() {
         />
         <link href="/favicon/favicon.ico" rel="shortcut icon" />
       </Head>
-      <body className="overflow-y-scroll bg-gray-1100 bg-[url('/grid.svg')]">
+      <body className="bg-gray-1100 overflow-y-scroll bg-[url('/grid.svg')]">
         <Main />
         <NextScript />
       </body>

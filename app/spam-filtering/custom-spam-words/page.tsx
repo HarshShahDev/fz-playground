@@ -22,9 +22,14 @@ export default function Page() {
           </Link>{' '}
           and enter that form-id bellow.
         </p>
-        <div className="mb-4 mt-4 w-[30%] justify-center">
+        <div className="mb-4 mt-4 w-[70%] justify-center">
           <label className="mb-2 block text-sm font-bold " htmlFor="form-id">
             Form ID
+            <p className="m-0 text-sm font-thin">
+              If you want to experiment with your own settings, please provide
+              your Form Id. Otherwise, feel free to try the example Form from
+              Formzillion.
+            </p>
           </label>
           <Input
             id="form-id"
@@ -32,6 +37,7 @@ export default function Page() {
             name="formId"
             placeholder="eg. nuKZPc-I"
             required
+            className="w-[50%]"
             onChange={(e) => {
               setFormId(e.target.value);
             }}

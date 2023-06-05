@@ -6,9 +6,12 @@ import Button from '#/ui/Buttons';
 import { ExternalLink } from '#/ui/external-link';
 import { Input } from '#/ui/input';
 import { TextArea } from '#/ui/textArea';
+import { isEmpty } from 'lodash';
 
 export default function Page() {
   const [formId, setFormId] = useState('wtGj-cVA');
+  const [redirectUrl, setRedirectUrl] = useState('');
+
   return (
     <>
       <div className="prose prose-sm prose-invert max-w-none">
@@ -24,20 +27,48 @@ export default function Page() {
           </Link>
           &nbsp; and enter that form-id bellow.
         </p>
-        <div className="mb-4 mt-4 w-[30%] justify-center">
-          <label className="mb-2 block text-sm font-bold " htmlFor="form-id">
-            Form ID
-          </label>
-          <Input
-            id="form-id"
-            type="text"
-            name="formId"
-            placeholder="eg. nuKZPc-I"
-            required
-            onChange={(e) => {
-              setFormId(e.target.value);
-            }}
-          />
+        <div className="flex space-x-5">
+          <div className="mb-4 mt-4 w-[70%] justify-center">
+            <label className="mb-2 block text-sm font-bold " htmlFor="form-id">
+              Form ID
+              <p className="m-0 text-sm font-thin">
+                If you want to experiment with your own settings, please provide
+                your Form Id. Otherwise, feel free to try the example Form from
+                Formzillion.
+              </p>
+            </label>
+            <Input
+              id="form-id"
+              type="text"
+              name="formId"
+              placeholder="eg. nuKZPc-I"
+              required
+              className="w-[50%]"
+              onChange={(e) => {
+                setFormId(e.target.value);
+              }}
+            />
+          </div>
+          <div className="flex items-center space-x-5">OR</div>
+          <div className="mb-4 mt-4 w-[70%] justify-center">
+            <label className="mb-2 block text-sm font-bold " htmlFor="form-id">
+              Redirect Url
+              <p className="m-0 text-sm font-thin">
+                Enter your Url where you want to redirect on submmission
+              </p>
+            </label>
+            <Input
+              id="form-id"
+              type="text"
+              name="formId"
+              placeholder="eg. http://example.com"
+              required
+              className=""
+              onChange={(e) => {
+                setRedirectUrl(e.target.value);
+              }}
+            />
+          </div>
         </div>
         <form
           action={`https://dev-app.formzillion.com/f/${formId}`}
@@ -68,6 +99,9 @@ export default function Page() {
                 required
               />
             </div>
+            {!isEmpty(redirectUrl) && (
+              <input type="hidden" name="_redirect" value={redirectUrl} />
+            )}
             <div>
               <label
                 htmlFor="message"
